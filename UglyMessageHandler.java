@@ -2,7 +2,6 @@ import javax.naming.Context;
 import javax.naming.NamingException;
 
 public class UglyMessageHandler {
-    System.Logger logger = System.getLogger("MessageHandler");
 
     //Process each subscription type and return message status
     public String process(Context ctx, Message msg, String s) throws NamingException {
@@ -30,7 +29,7 @@ public class UglyMessageHandler {
             }
 
         } else {
-            logger.log(System.Logger.Level.WARNING, "unimplemented subscription type");
+            System.out.println("unimplemented subscription type");
             st = "unimplemented subscription type";
         }
 
