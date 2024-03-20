@@ -5,14 +5,8 @@ public class TimeSeries {
     private boolean hasBeenMultiplied;
     private Double multiplicationFactor;
 
-    public TimeSeries(List<Value> values, boolean hasBeenMultiplied, Double multiplicationFactor) {
-        this.values = values;
-        this.hasBeenMultiplied = hasBeenMultiplied;
-        this.multiplicationFactor = multiplicationFactor;
-    }
-
     public void multiplyValues() {
-        if (multiplyValues() == true) {
+        if (shouldMultiplyValues() == true) {
             if (values != null) {
                 for (Value value : values) {
                     if (value != null) {
@@ -25,7 +19,7 @@ public class TimeSeries {
     }
 
     //values cannot be multiplied if they have already been multiplied or multiplication factor is missing
-    private boolean multiplyValues() {
+    private boolean shouldMultiplyValues() {
         return !(hasBeenMultiplied == true || multiplicationFactor == null);
     }
 }

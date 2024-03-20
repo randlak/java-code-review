@@ -2,13 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MinMaxPeriod {
-    private final String minValue;
-    private final String maxValue;
-
-    public MinMaxPeriod(String minValue, String maxValue) {
-        this.minValue = minValue;
-        this.maxValue = maxValue;
-    }
+    private String minValue;
+    private String maxValue;
 
     public String getMinValue() {
         return minValue;
