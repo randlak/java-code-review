@@ -1,6 +1,3 @@
-import javax.naming.Context;
-import javax.naming.NamingException;
-
 import static java.lang.System.Logger;
 
 public class MessageHandler {
@@ -18,17 +15,18 @@ public class MessageHandler {
     // Private fields
     private static final String STATUS_UNKNOWN = "status0";
 
-    private static final String GENERAL_ERROR = "system error when getting message status: ";
+    private static final String VALIDATION_ERROR = "validation error when getting message status: context or message is null";
 
     private static final String UNIMPLEMENTED_SUBSCRIPTION_ERROR = "subscription not implemented: ";
+    private static final String GENERAL_ERROR = "system error when getting message status: ";
     private static final Logger logger = System.getLogger("MessageHandler");
 
-    private Context context;
+    private AppContext context;
     private Message message;
 
-    public String getMessageStatusForSubscription(Context context, Message message, String subscription) {
+    public String getMessageStatusForSubscription(AppContext context, Message message, String subscription) {
         if (context == null || message == null) {
-            logger.log(Logger.Level.ERROR, GENERAL_ERROR + "context or message is null");
+            logger.log(Logger.Level.ERROR, VALIDATION_ERROR);
             return "";
         }
 
@@ -48,13 +46,12 @@ public class MessageHandler {
 
     private String getStatusForContextAndMessageType(String contextName, String messageType) {
         try {
-            if (this.context.getNameInNamespace().equals(contextName) &&
+            if (this.context.getName().equals(contextName) &&
                     this.message.getType().equals(messageType)) {
                 return this.message.getStatus();
             }
-        } catch (NamingException e) {
+        } catch (IllegalStateException e) {
             logger.log(Logger.Level.ERROR, GENERAL_ERROR, e);
-            throw new RuntimeException(e);
         }
 
         return STATUS_UNKNOWN;
