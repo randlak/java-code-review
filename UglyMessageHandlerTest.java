@@ -19,7 +19,7 @@ class UglyMessageHandlerTest {
         String status = handler.process(context, message, subscription);
         assertNotNull(status);
         assertNotEquals("", status);
-        //assertEquals("status_test", status);
+        assertEquals("status_test", status);
     }
 
     @org.junit.jupiter.api.Test
@@ -35,7 +35,7 @@ class UglyMessageHandlerTest {
 
         String status = handler.process(context, message, subscription);
         assertNotNull(status);
-        assertNotEquals("", status);
+        assertEquals("status0", status);
     }
 
 }

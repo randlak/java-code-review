@@ -2,6 +2,11 @@ import static java.lang.System.Logger;
 
 public class MessageHandler {
 
+    // Subscription client names
+    public static final String SUBSCRIPTION_CLIENT1 = "sub1";
+    public static final String SUBSCRIPTION_CLIENT2 = "sub2";
+    public static final String SUBSCRIPTION_CLIENT3 = "sub3";
+
     // Context names
     public static final String CONTEXT_NAME_INTERNAL = "context1";
     public static final String CONTEXT_NAME_QUEST = "context2";
@@ -30,13 +35,14 @@ public class MessageHandler {
             return "";
         }
 
+        //TODO: Code review: move to getStatusForContextAndMessageType paramerter?
         this.context = context;
         this.message = message;
 
         return switch (subscription) {
-            case "sub1" -> getStatusForContextAndMessageType(CONTEXT_NAME_INTERNAL, MESSAGE_TYPE_EMAIL);
-            case "sub2" -> getStatusForContextAndMessageType(CONTEXT_NAME_QUEST, MESSAGE_TYPE_SMS);
-            case "sub3" -> getStatusForContextAndMessageType(CONTEXT_NAME_PUBLIC, MESSAGE_TYPE_MAIL);
+            case SUBSCRIPTION_CLIENT1 -> getStatusForContextAndMessageType(CONTEXT_NAME_INTERNAL, MESSAGE_TYPE_EMAIL);
+            case SUBSCRIPTION_CLIENT2 -> getStatusForContextAndMessageType(CONTEXT_NAME_QUEST, MESSAGE_TYPE_SMS);
+            case SUBSCRIPTION_CLIENT3 -> getStatusForContextAndMessageType(CONTEXT_NAME_PUBLIC, MESSAGE_TYPE_MAIL);
             default -> {
                 logger.log(Logger.Level.WARNING, UNIMPLEMENTED_SUBSCRIPTION_ERROR + subscription);
                 yield "";

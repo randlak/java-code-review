@@ -1,0 +1,7 @@
+-klassi, meetodi, parameetrite
+-korduv kood
+-koodi struktuuri keerukus
+-paju if lauseid -> switch laused
+-hardkode vaartused-> konstandid
+-validatsioonid
+-stiil: loggerite kasutamine
