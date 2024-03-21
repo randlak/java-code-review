@@ -1,7 +1,8 @@
--klassi, meetodi, parameetrite
+UglyMessageHandler klassi koodi ülevaatuse tulemus:
+-klassi, meetodi, parameetrite nimed pole end seletavad
 -korduv kood
--koodi struktuuri keerukus
--paju if lauseid -> switch laused
--hardkode vaartused-> konstandid
--validatsioonid
--stiil: loggerite kasutamine
+-koodi struktuuri liigne keerukus
+-paju elde if lauseid -> switch laused
+-hardcode väärtused-> konstandid
+-validatsioonid puudu
+-stiil: loggerite kasutamine System.out asemel
